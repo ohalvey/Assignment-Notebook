@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var assignmentItems =
+            [AssignmentItem(priority: "High", description: "Take out trash", dueDate: Date()),
+             AssignmentItem(priority: "Medium", description: "Pick up clothes", dueDate: Date()),
+             AssignmentItem(priority: "Low", description: "Eat a donut", dueDate: Date())]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(assignmentItems) { item in
+                    Text(item.description)
+                }
+            }
+            .navigationBarTitle("Assignment Items", displayMode: .inline)
         }
-        .padding()
     }
 }
 
@@ -24,3 +29,10 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+struct AssignmentItem: Identifiable {
+    var id = UUID()
+    var priority = String()
+    var description = String()
+    var dueDate = Date()
+}
+
