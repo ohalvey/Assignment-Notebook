@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343FD2E129A6A185003C7C00 /* AddAssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343FD2E029A6A185003C7C00 /* AddAssignmentView.swift */; };
+		343FD2E329A70E9E003C7C00 /* AssignmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343FD2E229A70E9E003C7C00 /* AssignmentList.swift */; };
 		34CFBA44299E8765004114AA /* Assignment_NotebookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CFBA43299E8765004114AA /* Assignment_NotebookApp.swift */; };
 		34CFBA46299E8765004114AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CFBA45299E8765004114AA /* ContentView.swift */; };
 		34CFBA48299E8766004114AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CFBA47299E8766004114AA /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		343FD2E029A6A185003C7C00 /* AddAssignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssignmentView.swift; sourceTree = "<group>"; };
+		343FD2E229A70E9E003C7C00 /* AssignmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentList.swift; sourceTree = "<group>"; };
 		34CFBA40299E8765004114AA /* Assignment Notebook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment Notebook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CFBA43299E8765004114AA /* Assignment_NotebookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment_NotebookApp.swift; sourceTree = "<group>"; };
 		34CFBA45299E8765004114AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			children = (
 				34CFBA43299E8765004114AA /* Assignment_NotebookApp.swift */,
 				34CFBA45299E8765004114AA /* ContentView.swift */,
+				343FD2E229A70E9E003C7C00 /* AssignmentList.swift */,
+				343FD2E029A6A185003C7C00 /* AddAssignmentView.swift */,
 				34CFBA47299E8766004114AA /* Assets.xcassets */,
 				34CFBA49299E8766004114AA /* Preview Content */,
 			);
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343FD2E329A70E9E003C7C00 /* AssignmentList.swift in Sources */,
 				34CFBA46299E8765004114AA /* ContentView.swift in Sources */,
 				34CFBA44299E8765004114AA /* Assignment_NotebookApp.swift in Sources */,
+				343FD2E129A6A185003C7C00 /* AddAssignmentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

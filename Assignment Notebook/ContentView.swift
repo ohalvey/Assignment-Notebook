@@ -8,50 +8,60 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var assignmentItems =
-            [AssignmentItem(priority: "High", description: "Take out trash", dueDate: Date()),
-             AssignmentItem(priority: "Medium", description: "Pick up clothes", dueDate: Date()),
-             AssignmentItem(priority: "Low", description: "Eat a donut", dueDate: Date())]
+    @ObservedObject var assignmentList = AssignmentList()
+    @State private var showingAddAssignmentView = false
     var body: some View {
         NavigationView {
-            List {
-                ForEach(assignmentItems) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.priority)
-                                .font(.headline)
-                            Text(item.description)
+            ZStack {
+                
+                List {
+                    ForEach(assignmentList.Assignments) { Assignment in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(Assignment.priority)
+                                    .font(.headline)
+                                Text(Assignment.description)
+                            }
+                            Spacer()
+                            Text(Assignment.dueDate, style: .date)
                         }
-                        Spacer()
-                        Text(item.dueDate, style: .date)
+                        
                     }
+                    .onMove { indices, newOffset in
+                        assignmentList.Assignments.move(fromOffsets: indices, toOffset: newOffset)
+                    }
+                    .onDelete { indexSet in
+                        assignmentList.Assignments.remove(atOffsets: indexSet) }
                     
                 }
-                .onMove { indices, newOffset in
-                    assignmentItems.move(fromOffsets: indices, toOffset: newOffset)
-                }
-                .onDelete { indexSet in
-                    assignmentItems.remove(atOffsets: indexSet)
                 
-                }
+                .sheet(isPresented: $showingAddAssignmentView, content: {
+                    AddAssignment(assignment: assignmentList)
+                })
+                
+                .navigationBarTitle("Assignment Items", displayMode: .inline)
+                .background(Color.mint)
+                .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+                    showingAddAssignmentView = true }){
+                        Image(systemName: "plus")
+                    })
                 
             }
-            .navigationBarTitle("Assignment Items", displayMode: .inline)
-            .navigationBarItems(leading: EditButton())
+            
         }
-        
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
-}
-struct AssignmentItem: Identifiable {
-    var id = UUID()
-    var priority = String()
-    var description = String()
-    var dueDate = Date()
-}
+    struct Assignment: Identifiable, Codable {
+        var id = UUID()
+        var priority = String()
+        var description = String()
+        var dueDate = Date()
+    }
+    
+    
 
